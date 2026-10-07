@@ -1,0 +1,11 @@
+*.elf
+*.hex
+*.bin
+*.pdf
+*.pyc
+.vscode/
+__pycache__/
+venv/
+/Arduino/libraries
+/Arduino/sketch_aug11b
+/stm32/docs
