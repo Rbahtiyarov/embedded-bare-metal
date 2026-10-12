@@ -6,7 +6,7 @@ CC      = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
-CFLAGS  = $(MCU) -Wall -O2 -ffreestanding -nostdlib -I$(COMMON)
+CFLAGS  = $(MCU) -Wall -Wextra -Werror -O2 -ffreestanding -nostdlib -I$(COMMON)
 LDFLAGS = -T $(COMMON)/linker.ld -nostdlib
 
 # Исходники: локальный TARGET.c + общий startup.c
@@ -14,7 +14,7 @@ SRCS    = $(TARGET).c $(COMMON)/startup.c
 
 all: $(TARGET).bin
 
-$(TARGET).elf: $(SRCS) $(COMMON)/linker.ld
+$(TARGET).elf: $(SRCS) $(COMMON)/linker.ld $(COMMON)/common.mk
 	$(CC) $(CFLAGS) $(LDFLAGS) $(SRCS) -o $@
 	$(SIZE) $@
 
